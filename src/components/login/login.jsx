@@ -338,13 +338,13 @@ const Login = ({ open, setLog }) => {
     return (
         <>{openSig ?
             <Dialog maxWidth={true} onClose={handleClose} open={open}>
-                <LoginBox sx={{ width: {xs:'320px', sm: '600px', md: '700px' }, height: { sm: '380px', xs: '440px' }, paddingTop: { xs: '15px', sm: '0px' }, display: { sm: 'flex' } }}>
+                <LoginBox sx={{ width: {xs:'320px', sm: '600px', md: '700px' },minHeight:'350px',maxHeight:'440px',height:{sm:'350px',xs:'420px'}, paddingTop: { xs: '15px', sm: '0px' }, display: { sm: 'flex' } }}>
                     <Box sx={{ width: { sm: '40%' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <LoginTypography variant="p">Login</LoginTypography>
                     </Box>
                     <LoginEntry sx={{ width: { sm: '60%' }, height: { sm: '100%' } }}>
                         <Box style={{ display: 'flex', flexDirection: 'column', gap: '30px', width: '100%', justifyContent: 'center' }}>
-                            <Box style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingBottom: '20px' }}>
+                            <Box style={{ display: 'flex', flexDirection: 'column', gap: '10px', }}>
                                 <EditTypography value={loginUser.username} error={loginUsername} variant="standard" name="username" label="Enter Username" sx={{ input: { color: "white" }, "label": { color: "white" } }} onChange={(e) => { OnLoginInputChange(e) }} onKeyDown={handleEnterKeyLogin} ></EditTypography>
                                 <EditTypography value={loginUser.password} error={loginPassword} variant="standard" name="password" type="password" label="Enter password" sx={{ input: { color: "white" }, "label": { color: "white" } }} onChange={(e) => { OnLoginInputChange(e) }} onKeyDown={handleEnterKeyLogin} ></EditTypography>
                                 {errorMessage && <Box style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><ErrorTypography style={{ color: 'crimson' }} variant="p">{errorMessage}</ErrorTypography></Box>}
@@ -362,13 +362,13 @@ const Login = ({ open, setLog }) => {
             </Dialog>
             :
             <Dialog maxWidth={true} open={open} onClose={handleClose}>
-                <SignBox sx={{ width: {xs:'320px',sm: '600px', md: '700px' }, height: { sm: '380px', xs: '480px' }, paddingTop: { xs: '15px', sm: '0px' }, display: { sm: 'flex' } }}>
+                <SignBox sx={{ width: {xs:'320px', sm: '600px', md: '700px' },minHeight:'350px',maxHeight:'440px',height:{sm:'350px',xs:'440px'}, paddingTop: { xs: '15px', sm: '0px' }, display: { sm: 'flex' } }}>
                     <Box sx={{ width: { sm: '40%' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <LoginTypography variant="p">Sign Up</LoginTypography>
                     </Box>
                     <LoginEntry sx={{ width: { sm: '60%' }, height: { sm: '100%' } }}>
                         <Box style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '100%', justifyContent: 'center' }}>
-                            <Box style={{ display: 'flex', flexDirection: 'column', gap: '5px', paddingBottom: '20px' }}>
+                            <Box style={{ display: 'flex', flexDirection: 'column', gap: '5px'}}>
                                 <EditTypography error={signUsername} variant="standard" onChange={(e) => { OnSignInputChange(e); }} name="username" label="Enter Username" sx={{ input: { color: "white" }, "label": { color: "white" } }} onKeyDown={handleEnterKeySign}></EditTypography>
                                 <EditTypography error={signEmail} variant="standard" onChange={(e) => { OnSignInputChange(e); }} name="email" label="Enter Email" sx={{ input: { color: "white" }, "label": { color: "white" } }} onKeyDown={handleEnterKeySign}></EditTypography>
                                 <EditTypography error={signPassword} variant="standard" onChange={(e) => { OnSignInputChange(e); }} name="password" type="password" label="Enter Password" sx={{ input: { color: "white" }, "label": { color: "white" } }} onKeyDown={handleEnterKeySign}></EditTypography>
@@ -376,7 +376,7 @@ const Login = ({ open, setLog }) => {
                                 {signMessage && <Box style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><ErrorTypography style={{ color: 'lime' }} variant="p">{signMessage}</ErrorTypography></Box>}
                             </Box>
                             <SignButtonBox> <EditButton style={{ marginTop: "10px" }} onClick={SignUp} variant="outlined" > Sign Up </EditButton> </SignButtonBox>
-                            <SignButtonBox><EditButton style={{ marginTop: "10px", backgroundColor: "white", border: "1px solid #7F27FF", color: '#7F27FF' }} onClick={openLogIn} variant="outlined" > Account Existed</EditButton> </SignButtonBox>
+                            <SignButtonBox><EditButton style={{ marginTop: "10px", backgroundColor: "white", border: "1px solid #7F27FF", color: 'black' }} onClick={openLogIn} variant="outlined" > Account Existed</EditButton> </SignButtonBox>
                         </Box>
                     </LoginEntry>
                 </SignBox>

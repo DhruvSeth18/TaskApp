@@ -21,20 +21,17 @@ const ChangeP = styled('p')`
     margin-top:10px;
 `
 const AnimateGrid = styled(Box)`
-    position:absolute;
-    left:50%;
     min-width:380px;
-    width:100%;
-    transform: translate(-50%, -50%);
     animation: fadeInFromBottom 1s forwards;
+    position:relative;
     @keyframes fadeInFromBottom {
         0%{
-            top:55%;
             opacity: 0;
+            top:50px;
         }
         100%{
-            top:48%;
             opacity:1;
+            top:0px;
         }
     }
 `
@@ -73,7 +70,7 @@ const EditLinkedInIcon = styled(LinkedInIcon)`
     }
 `
 const ScrollTrack = styled(Box)`
-    height:3.5px;
+    height:4.5px;
     position:fixed;
     left:0px;
     width:100%;
@@ -94,20 +91,18 @@ const ScrollTrack = styled(Box)`
 const TransferNotes = styled(Box)`
     background: rgb(34,193,195);
     background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
-    position:absolute;
-    left:50%;
-    top:75%;
-    transform: translate(-50%, -50%);
     animation: fadeIn 1s forwards;
+    position:relative;
+    top:140px;
     cursor:pointer;
     @keyframes fadeIn {
         0%{
-            left:45%;
             opacity: 0;
+            right:100px;
         }
         100%{
-            left:50%;
             opacity:1;
+            right:0px;
         }
     }
 `
@@ -135,19 +130,24 @@ const Intro = () => {
         <>
             <ScrollTrack sx={{top:{sm:'64px',xs:'56px'}}}></ScrollTrack>
             <Grid container style={{backgroundColor:'black'}}>
-                <Grid style={{height: '100vh'}} item>
-                    <AnimateGrid style={{ display: 'flex',flexDirection:'column',justifyContent: 'center', alignItems: 'center'}}>
-                        <ChangeH2 sx={{textAlign:'center',fontSize:{sm:'80px'}}} >Schedule Your Progress</ChangeH2>
-                        <ChangeP>Created by Dhruv Seth</ChangeP>
-                    </AnimateGrid>
-                    {
-                        username && <TransferNotes onClick={()=>{navigate(`/user/${username}`)}} style={{width:'230px',borderRadius:'20px',color:'white',display:'flex',justifyContent:'center',alignItems:'center',height:'60px',backgroundColor:'cyan'}}>
-                        <Box style={{display:'flex',fontSize:'20px',gap:'15px'}}>
-                            <Box>Manage Notes</Box>
-                            <ArrowForwardIcon style={{fontSize:'25px'}} />
+                <Grid style={{minHeight: '800px', height:'800px',width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}} item>
+                    <Box style={{maxWidth:{sm:'400px',xs:'350px'}}}>
+                        <AnimateGrid style={{ display: 'flex',flexDirection:'column',justifyContent: 'center', alignItems: 'center'}}>
+                            <ChangeH2 sx={{textAlign:'center',fontSize:{xs:'50px',sm:'65px'}}} >Schedule Your Progress</ChangeH2>
+                            <ChangeP>Created by Dhruv Seth</ChangeP>
+                        </AnimateGrid>
+                        <Box style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                            {
+                                username && <TransferNotes onClick={()=>{navigate(`/user/${username}`)}} style={{width:'230px',borderRadius:'20px',color:'white',display:'flex',justifyContent:'center',alignItems:'center',height:'60px',backgroundColor:'cyan'}}>
+                                <Box style={{display:'flex',fontSize:'20px',gap:'15px'}}>
+                                    <Box>Manage Notes</Box>
+                                    <ArrowForwardIcon style={{fontSize:'25px'}} />
+                                </Box>
+                            </TransferNotes>
+                            }
                         </Box>
-                    </TransferNotes>
-                    }
+                        
+                    </Box>
                 </Grid>
             </Grid>
             <Box style={{padding:'20px',position:'fixed',bottom:'0px',right:'0px',display:'flex',gap:'20px'}}>
