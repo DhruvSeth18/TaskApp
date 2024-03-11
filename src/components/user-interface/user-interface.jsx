@@ -114,13 +114,6 @@ const UserInterface = () => {
                                 <Button style={{color:'white',background:'none',width:'100%',height:'55px'}} variant='contained'>Pomodoro</Button>
                             <hr />
                         </Box>
-                        <Box style={{position:'absolute',bottom:'30px'}}>
-                            <Box style={{display:'flex',flexDirection:'column',alignItems:'center',position:'relative',left:'10px',gap:'20px'}}>
-                                <Box style={{color:'#1d4ed8',fontSize:'30px',fontWeight:'bold'}}>Just Created</Box>
-                                <Box style={{color:'#09DE15',fontSize:'30px',fontWeight:'bold'}}>Completed</Box>
-                                <Box style={{color:'crimson',fontSize:'30px',fontWeight:'bold'}}>Date Exceed</Box>
-                            </Box>
-                        </Box>
                     </Box>
                 </Drawer>
 
@@ -143,13 +136,6 @@ const UserInterface = () => {
                             <hr />
                                 <Button style={{color:'white',background:'none',width:'100%',height:'55px'}} variant='contained'>Pomodoro</Button>
                             <hr />
-                        </Box>
-                        <Box style={{position:'absolute',bottom:'30px'}}>
-                            <Box style={{display:'flex',flexDirection:'column',alignItems:'center',position:'relative',left:'10px',gap:'20px'}}>
-                                <Box style={{color:'#1d4ed8',fontSize:'30px',fontWeight:'bold'}}>Just Created</Box>
-                                <Box style={{color:'#09DE15',fontSize:'30px',fontWeight:'bold'}}>Completed</Box>
-                                <Box style={{color:'crimson',fontSize:'30px',fontWeight:'bold'}}>Date Exceed</Box>
-                            </Box>
                         </Box>
                     </Box>
                 </Drawer>

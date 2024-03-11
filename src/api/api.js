@@ -4,7 +4,7 @@ const URL = 'https://taskserver-ab.up.railway.app';
 export const UserLogin = async (data) => {
     try {
         const response = await axios.post(`${URL}/notes/login`, data, {
-            timeout: 2000,
+            timeout: 3000,
         });
         console.log(response);
         return {
@@ -34,7 +34,7 @@ export const UserLogin = async (data) => {
 export const signingUser = async (data) => {
     try {
         const response = await axios.post(`${URL}/notes/signup`, data, {
-            timeout: 2000,
+            timeout: 3000,
         });
         return {
             status:response.data.status,
@@ -65,7 +65,7 @@ export const NotesGet = async (UrlName) => {
                 authorization: localStorage.getItem("token")
             }
         },{
-            timeout: 2000,
+            timeout: 3000,
         })
         if(response.status===204){
             return{
@@ -104,7 +104,7 @@ export const DeleteNote = async (username,Id) => {
                 authorization: localStorage.getItem("token")
             }
         }, {
-            timeout: 2000,
+            timeout: 3000,
         });
         return{
             status:response.data.status
@@ -131,7 +131,7 @@ export const updateNote = async (username,data, Id) => {
                 authorization: localStorage.getItem("token")
             }
         }, {
-            timeout: 2000,
+            timeout: 3000,
         })
         return {
             status:response.data.status,
@@ -158,7 +158,7 @@ export const CreateNotes = async (username,data)=>{
                 authorization: localStorage.getItem("token")
             }
         }, {
-            timeout: 2000,
+            timeout: 3000,
         })
         console.log(response);
         return {
