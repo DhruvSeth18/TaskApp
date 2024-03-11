@@ -269,7 +269,7 @@ const NotesCard = ({newNote,userData,noData,setNewNote,setNoData,setClickOnce,cl
 
     return (
         <>
-            <CardContainer style={{ display: noData ? 'flex' : 'grid', gap: '20px' }}>
+            <CardContainer style={{ display: noData ? 'flex' : 'grid', gap: '20px',padding:'20px' }}>
                 {
                     newNote&&<Card style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#1d4ed8' }}>
                         <Box style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>

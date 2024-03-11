@@ -13,7 +13,9 @@ import { NotesGet } from '../../api/api';
 
 const drawerWidth = 240;
 
+const ScrollGrid = styled(Grid)`
 
+`
 const UserInterface = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
@@ -140,10 +142,10 @@ const UserInterface = () => {
             </Box>
             <Box component="main" sx={{ flexGrow: 1, minHeight: '100vh', p: 3, marginTop: { xs: '50px', sm: '0', lg: '0' }, width: { sm: `calc(100% - ${drawerWidth}px)` }, backgroundColor: ' black' }}>
                 <Grid container>
-                    <Grid item style={{ display: 'flex', gap: '10px' }} xs={12} lg={12} sm={12} md={12}>
+                    <Grid item style={{display: 'flex', gap: '10px' }} xs={12} lg={12} sm={12} md={12}>
                         <Typography style={{ color: 'white', fontSize: '70px', fontWeight: 'bold', letterSpacing: '2px' }}>Notes</Typography>
                     </Grid>
-                    <Grid item style={{ height: '95vh', flex: '1', overflow: 'auto', padding: '20px' }} xs={12} lg={12} sm={12} md={12}>
+                    <Grid item style={{ height: '80vh', flex: '1', overflow: 'auto', padding: '20px' }} xs={12} lg={12} sm={12} md={12}>
                         <NotesCard newNote={newNote} setNewNote={setNewNote} noData={noData} setNoData={setNoData} userData={userData} setClickOnce={setClickOnce} clickOnce={clickOnce}/>
                     </Grid>
                 </Grid>
