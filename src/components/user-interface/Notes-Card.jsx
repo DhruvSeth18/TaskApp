@@ -26,6 +26,9 @@ const CardContainer = styled(Box)`
     @media (max-width: 839px) {
         grid-template-columns: auto;
     }
+    @media(min-height:900px){
+        grid-template-rows: auto auto auto;
+    }
 `;
 
 const EditTextArea = styled(TextareaAutosize)`
