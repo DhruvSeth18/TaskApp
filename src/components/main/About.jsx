@@ -14,7 +14,7 @@ const ChangeTypo = styled(Typography)`
 const About = () => {
     return (
         <>
-            <Grid container sx={{ backgroundColor: 'black', minHeight: '100vh', paddingTop: '10vh'}}>
+            <Grid container sx={{ backgroundColor: 'black', minHeight: '100vh',height:'750px', paddingTop: '10vh'}}>
                 <Grid item lg={5} md={6} sm={12} xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <img style={{ width: '330px', height: '330px'}} src={ProfileImage} alt="Profile" />
                 </Grid>
