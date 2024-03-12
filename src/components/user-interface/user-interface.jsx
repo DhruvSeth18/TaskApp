@@ -145,7 +145,7 @@ const UserInterface = () => {
                     <Grid item style={{display: 'flex', gap: '10px' }} xs={12} lg={12} sm={12} md={12}>
                         <Typography style={{ color: 'white', fontSize: '70px', fontWeight: 'bold', letterSpacing: '2px' }}>Notes</Typography>
                     </Grid>
-                    <Grid item style={{ height: '80vh', flex: '1', overflow: 'auto', padding: '20px' }} xs={12} lg={12} sm={12} md={12}>
+                    <Grid item style={{ height: '80vh', flex: '1', overflow: 'auto', padding: '1px' }} xs={12} lg={12} sm={12} md={12}>
                         <NotesCard newNote={newNote} setNewNote={setNewNote} noData={noData} setNoData={setNoData} userData={userData} setClickOnce={setClickOnce} clickOnce={clickOnce}/>
                     </Grid>
                 </Grid>

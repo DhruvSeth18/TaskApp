@@ -1,10 +1,11 @@
 import axios from 'axios';
-const URL = 'https://taskserver-ab.up.railway.app';
+const URL = 'http://192.168.159.167:8092';
+// https://taskserver-ab.up.railway.app'
 
 export const UserLogin = async (data) => {
     try {
         const response = await axios.post(`${URL}/notes/login`, data, {
-            timeout: 3000,
+            timeout: 4000,
         });
         console.log(response);
         return {
@@ -34,7 +35,7 @@ export const UserLogin = async (data) => {
 export const signingUser = async (data) => {
     try {
         const response = await axios.post(`${URL}/notes/signup`, data, {
-            timeout: 3000,
+            timeout: 4000,
         });
         return {
             status:response.data.status,
@@ -65,7 +66,7 @@ export const NotesGet = async (UrlName) => {
                 authorization: localStorage.getItem("token")
             }
         },{
-            timeout: 3000,
+            timeout: 4000,
         })
         if(response.status===204){
             return{
@@ -104,7 +105,7 @@ export const DeleteNote = async (username,Id) => {
                 authorization: localStorage.getItem("token")
             }
         }, {
-            timeout: 3000,
+            timeout: 4000,
         });
         return{
             status:response.data.status
@@ -126,12 +127,12 @@ export const DeleteNote = async (username,Id) => {
 
 export const updateNote = async (username,data, Id) => {
     try {
-        const response = await axios.post(`${URL}/notes/${username}/${Id}`, data, {
+        const response = await axios.put(`${URL}/notes/${username}/${Id}`, data, {
             headers: {
                 authorization: localStorage.getItem("token")
             }
         }, {
-            timeout: 3000,
+            timeout: 4000,
         })
         return {
             status:response.data.status,
@@ -158,7 +159,7 @@ export const CreateNotes = async (username,data)=>{
                 authorization: localStorage.getItem("token")
             }
         }, {
-            timeout: 3000,
+            timeout: 4000,
         })
         console.log(response);
         return {

@@ -107,7 +107,7 @@ const TransferNotes = styled(Box)`
     background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
     animation: fadeIn 1s forwards;
     position:relative;
-    top:140px;
+    top:100px;
     cursor:pointer;
     @keyframes fadeIn {
         0%{
@@ -144,7 +144,7 @@ const Intro = () => {
         <>
             <ScrollTrack sx={{ top: { sm: '64px', xs: '56px' } ,zIndex:'3'}}></ScrollTrack>
             <Grid container style={{ backgroundColor: 'black' }}>
-                <Grid style={{ minHeight: '800px', height: '800px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} item>
+                <Grid style={{ minHeight: '100vh', height: '700px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }} item>
                     <Box style={{ maxWidth: { sm: '400px', xs: '350px' } }}>
                         <AnimateGrid style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                             <ChangeH2 sx={{ textAlign: 'center', fontSize: { xs: '50px', sm: '65px' } }} >Schedule Your Progress</ChangeH2>
@@ -163,7 +163,7 @@ const Intro = () => {
                     </Box>
                 </Grid>
             </Grid>
-            <Box sx={{ width: '100%', height: '750px', paddingTop: '4vh', backgroundColor: 'black', overflow: 'hidden',display:'flex',justifyContent:'center',alignItems:'center' }}>
+            <Box sx={{ width: '100%', height: '700px', paddingTop: '4vh', backgroundColor: 'black', overflow: 'hidden',display:'flex',justifyContent:'center',alignItems:'center' }}>
                 <CustomizedTimeline />
             </Box>
             <footer class="footer">
