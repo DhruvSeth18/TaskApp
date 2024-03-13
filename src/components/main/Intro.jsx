@@ -104,7 +104,11 @@ const ScrollTrack = styled(Box)`
 
 const TransferNotes = styled(Box)`
     background: rgb(34,193,195);
-    background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
+    ${'' /* background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf); */}
+    background: #ee0979;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     animation: fadeIn 1s forwards;
     position:relative;
     top:100px;
@@ -163,7 +167,7 @@ const Intro = () => {
                     </Box>
                 </Grid>
             </Grid>
-            <Box sx={{ width: '100%', height: '700px', paddingTop: '4vh', backgroundColor: 'black', overflow: 'hidden',display:'flex',justifyContent:'center',alignItems:'center' }}>
+            <Box sx={{ width: '100%', minHeight: '700px', paddingTop: '110px', paddingBottom:'200px' ,backgroundColor: 'black', overflow: 'hidden',display:'flex',justifyContent:'center',alignItems:'center' }}>
                 <CustomizedTimeline />
             </Box>
             <footer class="footer">
@@ -175,26 +179,22 @@ const Intro = () => {
                                 <li><Link href="#">about us</Link></li>
                                 <li><Link href="#">our services</Link></li>
                                 <li><Link href="#">privacy policy</Link></li>
-                                <li><Link href="#">affiliate program</Link></li>
                             </ul>
                         </div>
                         <div class="footer-col">
                             <h4>get help</h4>
                             <ul>
                                 <li><Link href="#">FAQ</Link></li>
-                                <li><Link href="#">shipping</Link></li>
-                                <li><Link href="#">returns</Link></li>
-                                <li><Link href="#">order status</Link></li>
-                                <li><Link href="#">payment options</Link></li>
+                                <li><Link href="#">Documentation</Link></li>
+                                <li><Link href="#">Terms of Service and Privacy Policy</Link></li>
+                                <li><Link href="#">Email Support</Link></li>
+                                <li><Link href="#">Privacy Policy</Link></li>
                             </ul>
                         </div>
                         <div class="footer-col">
-                            <h4>online shop</h4>
+                            <h4>Get in Touch</h4>
                             <ul>
-                                <li><Link href="#">watch</Link></li>
-                                <li><Link href="#">bag</Link></li>
-                                <li><Link href="#">shoes</Link></li>
-                                <li><Link href="#">dress</Link></li>
+                                <li><Link href="#">Contact Us</Link></li>
                             </ul>
                         </div>
                         <div class="footer-col">

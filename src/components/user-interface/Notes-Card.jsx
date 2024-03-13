@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Slide from '@mui/material/Slide';
 import CancelIcon from '@mui/icons-material/Cancel';
+import Spinner from './gear-spinner.svg';
 
 const CardContainer = styled(Box)`
     border-radius:10px;
@@ -23,7 +24,7 @@ const CardContainer = styled(Box)`
     @media (max-width: 1100px) {
         grid-template-columns: auto auto;
     }
-    @media (max-width: 839px) {
+    @media (max-width: 670px) {
         grid-template-columns: auto;
     }
     @media(min-height:900px){
@@ -110,11 +111,22 @@ const NotesCard = ({newNote,userData,noData,setNewNote,setNoData,setClickOnce,cl
     const [signMessage, setSignMessage] = useState("");
     const [ErrorSnackbar, setErrorSnackbar] = useState(false);
     const [SuccessSnackbar, setSuccessSnackbar] = useState(false);
+    const [loading ,setloading] = useState(true);
     const {username} = useParams();
     
     useEffect(() => {
         setEditableData(userData);
     }, [userData,setEditableData,setNoData]);
+
+    useEffect(()=>{
+        const timeout = setTimeout(() => {
+            setloading(false);
+        }, 2500);
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    },[])
 
     const SlideTransition = (props) => {
         return <Slide {...props} direction="up" />;
@@ -127,12 +139,8 @@ const NotesCard = ({newNote,userData,noData,setNewNote,setNoData,setClickOnce,cl
     const closeSuccessSnackBar = () => {
         setSuccessSnackbar(false);
     }
-    const currentDate = new Date();
-    const formattedDate = new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    }).format(currentDate);
+
+
 
     const userNoteDelete = async (index) => {
         const updateNote = await editableData.filter(data => data._id !== index);
@@ -266,12 +274,25 @@ const NotesCard = ({newNote,userData,noData,setNewNote,setNoData,setClickOnce,cl
             setError(response.message);
         }
     }
+    const currentDate = new Date();
+    const NoteDate = (currentDate)=>{
+        const curr = new Date(currentDate);
+        const formatDate = Intl.DateTimeFormat('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        }).format(curr); 
+        console.log(currentDate);
+        return formatDate;
+    }
 
     return (
         <>
-            <CardContainer style={{ display: noData ? 'flex' : 'grid', gap: '20px',padding:'20px' }}>
+            <CardContainer sx={{position:'relative',display: noData ? 'flex' : 'grid', gap: '20px',padding:'20px' }}>
+                {/* {loading && <CircularProgress sx={{position:'absolute',top:'40%',left:'50%',transform:'translate(-50%,-50%'}}/>} */}
+                {loading && <img src={Spinner} style={{position:'absolute',top:'40%',left:'50%',transform:'translate(-50%,-50%',width:'50px'}} alt='spinner revolving'/>}
                 {
-                    newNote&&<Card style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#1d4ed8' }}>
+                    newNote &&<Card style={{ display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#1d4ed8' }}>
                         <Box style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
                             <Typography style={{color:'white',fontSize:'20px',fontWeight:'bold'}} variant='p'>Create New Note</Typography>
                         </Box>
@@ -291,7 +312,7 @@ const NotesCard = ({newNote,userData,noData,setNewNote,setNoData,setClickOnce,cl
                     </Card>
                 }
                 {
-                    !noData ?
+                    !noData && !loading ?
                         editableData.map((data) => {
                             return (
                                 <Card key={data._id} style={{ display: 'flex', flexDirection: 'column', gap: '20px', backgroundColor: data.color }}>
@@ -305,7 +326,7 @@ const NotesCard = ({newNote,userData,noData,setNewNote,setNoData,setClickOnce,cl
                                             </Tooltip>
                                         </Box>
                                         <Tooltip slotProps={TooltipClassDetail} title="Today's Date">
-                                            {formattedDate}
+                                            {NoteDate(data.currdate)}
                                         </Tooltip>
                                     </Box>
                                     <Box>
@@ -325,7 +346,7 @@ const NotesCard = ({newNote,userData,noData,setNewNote,setNoData,setClickOnce,cl
                             )
                         })
                         :
-                        <Box style={{ height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '20px', color: 'white' }}>
+                        !loading && <Box style={{ height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '20px', color: 'white' }}>
                             <h1 style={{ textAlign: 'center' }}> No Data Found </h1>
                         </Box>
                 }

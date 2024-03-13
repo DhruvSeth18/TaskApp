@@ -1,6 +1,7 @@
 import axios from 'axios';
-const URL = 'https://taskserver-ab.up.railway.app';
+const URL = 'https://task-server-sigma.vercel.app';
 // https://taskserver-ab.up.railway.app'
+// http://localhost:8092
 
 export const UserLogin = async (data) => {
     try {
@@ -23,11 +24,9 @@ export const UserLogin = async (data) => {
                 message: error.response.data.message
             }
         }
-        else{
-            return {
-                status:'fail',
-                message:'Not Working, Server is Down'
-            }
+        return {
+            status:'fail',
+            message:'Not Working, Server is Down'
         }
     }
 }
@@ -49,11 +48,9 @@ export const signingUser = async (data) => {
                 message: error.response.data.message
             }
         }
-        else{
-            return {
-                status:'fail',
-                message:'Not Working, Server is Down'
-            }
+        return {
+            status:'fail',
+            message:'Not Working, Server is Down'
         }
     }
 }
@@ -61,13 +58,12 @@ export const signingUser = async (data) => {
 export const NotesGet = async (UrlName) => {
     try {
         console.log(localStorage.getItem("token"));
-        const response = await axios.get(`${URL}/notes/${UrlName}`, {
+        const response = await axios.get(`${URL}/notes/${UrlName}`,{
             headers: {
                 authorization: localStorage.getItem("token")
-            }
-        },{
-            timeout: 4000,
-        })
+            },
+            timeout: 10000,
+        });
         if(response.status===204){
             return{
                 status:'empty',
@@ -80,6 +76,7 @@ export const NotesGet = async (UrlName) => {
         }
     }
     catch (error) {
+        console.log(error);
         if(error.response.status>=400){
             localStorage.removeItem("token");
             localStorage.removeItem("username");
@@ -103,9 +100,8 @@ export const DeleteNote = async (username,Id) => {
         const response = await axios.delete(`${URL}/notes/${username}/${Id}`, {
             headers: {
                 authorization: localStorage.getItem("token")
-            }
-        }, {
-            timeout: 4000,
+            },
+            timeout: 4000
         });
         return{
             status:response.data.status
@@ -130,10 +126,9 @@ export const updateNote = async (username,data, Id) => {
         const response = await axios.put(`${URL}/notes/${username}/${Id}`, data, {
             headers: {
                 authorization: localStorage.getItem("token")
-            }
-        }, {
+            },
             timeout: 4000,
-        })
+        });
         return {
             status:response.data.status,
             Notes: response.data.Notes
@@ -157,8 +152,7 @@ export const CreateNotes = async (username,data)=>{
         const response = await axios.post(`${URL}/notes/${username}`, data, {
             headers: {
                 authorization: localStorage.getItem("token")
-            }
-        }, {
+            },
             timeout: 4000,
         })
         console.log(response);

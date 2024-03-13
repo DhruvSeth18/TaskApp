@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { styled, Box, TextField, Button, Typography, Snackbar } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
-import { UserLogin } from '../../api/api.js';
+import { UserLogin } from '../../api/api';
 import { DataContext } from '../../context/DataContext.js';
 import { useNavigate } from 'react-router-dom';
-import { signingUser } from '../../api/api.js';
+import { signingUser } from '../../api/api';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Slide from '@mui/material/Slide';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -50,6 +50,9 @@ const EditTypography = styled(TextField)`
     }
     &:hover {
         & .MuiInput-underline:before {
+            border-bottom-color: white;
+        }
+        & .MuiInput-underline {
             border-bottom-color: white;
         }
     }

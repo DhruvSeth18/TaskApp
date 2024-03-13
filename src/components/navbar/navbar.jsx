@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const EditToolbar = styled(Toolbar)`
     background-color: black;
     width: 100%;
@@ -61,7 +62,11 @@ const NaviButton = styled(NavLink)`
     text-decoration:none;
     text-align:center;
 `
-
+const EditAccountIcon = styled(AccountCircleIcon)`
+background: linear-gradient(to right, #ff6a00, #ee0979);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+`
 const Nav = () => {
     const [openLog, setLog] = useState(false);
     const [username, setUsername] = useState("");
@@ -117,17 +122,18 @@ const Nav = () => {
                     <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ display: { sm: 'none' }, position: 'absolute', left: '5vh'}} >
                         <MenuIcon sx={{fontSize:'35px'}} />
                     </IconButton>
-                    <Box sx={{ width: '40%', display: { xs: 'none', sm: 'flex' }, justifyContent: 'space-around' }}>
+                    <Box sx={{ width:{sm:'50%',lg:'40%'}, display: { xs: 'none', sm: 'flex' }, justifyContent: 'space-around' }}>
                         <ChangeLink className='abc' to={'/intro'}>Home</ChangeLink>
                         <ChangeLink className='abc' to={'/about'}>About</ChangeLink>
                         <ChangeLink className='abc' to={'/contact'}>Contact</ChangeLink>
                         <ChangeLink className='abc' to={'/service'}>Service</ChangeLink>
+                        {username && <ChangeLink className='abc' to={`/user/${username}`}>Notes</ChangeLink>}
                     </Box>
                     <Box style={{ position: 'absolute', right: '25px', scale: '0.95' }}>
                         {
                             username ? <>
                                 <Box style={{ textDecoration: 'none', display: 'flex', gap: '5px', cursor: 'pointer' }} onClick={handleClick}>
-                                    <AccountCircleIcon style={{ color: 'white', width: '35px', height: '35px' }} />
+                                    <EditAccountIcon sx={{WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',backgroundImage: 'linear-gradient(90deg, rgba(0,116,182,1) 0%, rgba(0,116,182,0) 100%)', color: 'white', width: '35px', height: '35px' }} />
                                     <UsernameTypo style={{ fontSize: '18px', paddingTop: '7px' }} variant='p'>{username}</UsernameTypo>
                                 </Box>
 
@@ -162,6 +168,7 @@ const Nav = () => {
                             <NaviButton className="abc" to={'/about'}>About</NaviButton>
                             <NaviButton className="abc" to={'/contact'}>Contact</NaviButton>
                             <NaviButton className="abc" to={'/service'}>Service</NaviButton>
+                            {username && <NaviButton className="abc" to={`/user/${username}`}>Notes</NaviButton>}
                         </Box>
                     </Box>
                 </Drawer>

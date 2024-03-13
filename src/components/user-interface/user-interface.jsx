@@ -5,7 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate,NavLink} from 'react-router-dom';
 import { Typography, Grid, Button ,styled} from '@mui/material';
 import NotesCard from './Notes-Card';
 import { NotesGet } from '../../api/api';
@@ -13,9 +13,19 @@ import { NotesGet } from '../../api/api';
 
 const drawerWidth = 240;
 
-const ScrollGrid = styled(Grid)`
-
+const EditButton = styled(Button)`
+    border: 2px solid white;
+    font-size: 15px;
+    height: 40px;
+`;
+const NaviButton = styled(NavLink)`
+    padding-top:20px;
+    padding-bottom:20px;
+    color:white;
+    text-decoration:none;
+    text-align:center;
 `
+
 const UserInterface = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
@@ -89,30 +99,32 @@ const UserInterface = () => {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <AppBar position="fixed" sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` }, backgroundColor: '#191919', }} >
-                <Toolbar position="fixed" sx={{ mr: 2, display: { sm: 'none' }}}>
-                    <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ mr: 2, display: { sm: 'none' } }} >
+            <AppBar position="fixed" sx={{ width: { md: `calc(100% - ${drawerWidth}px)` }, ml: { sm: `${drawerWidth}px` }, backgroundColor: '#191919', }} >
+                <Toolbar position="fixed" sx={{ zIndex:'2',mr: 2, display: { md: 'none' }}}>
+                    <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ mr: 2, display: { md: 'none' } }} >
                         <MenuIcon />
                     </IconButton>
+                
+                <Box style={{ position: 'absolute',right:'0px', scale: '0.95' }}>
+                    <EditButton onClick={createNewNote} sx={{ color: 'white', fontSize: '15px', fontWeight: 'bold', letterSpacing: '1px',scale:{sm:'1',xs:'0.89'} }}> {clickOnce?"Create Notes":"Clear Notes"}</EditButton>
+                </Box>
                 </Toolbar>
             </AppBar>
-            <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label="mailbox folders" >
+            <Box component="nav" sx={{ width: { md: drawerWidth }, flexShrink: { sm: 0 } }} aria-label="mailbox folders" >
                 <Drawer variant="temporary" open={mobileOpen} onTransitionEnd={handleDrawerTransitionEnd} onClose={handleDrawerClose} ModalProps={{    keepMounted: true, }}
-                    sx={{ display: { xs: 'block', sm: 'none' },
+                    sx={{ display: { xs: 'block', md: 'none' },
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
                             width: drawerWidth,
                             backgroundColor: '#191919',
                     }, }}>
-                                        <Box style={{ display: 'flex',height:'100%', flexDirection: 'column', gap: '40px', padding: '20px' }}>
-                        <Typography style={{ color: 'white', fontSize: '25px' }}>{username}</Typography>
-                        <Box style={{ display: 'flex', justifyContent: 'center' }}>
-                            <Button onClick={createNewNote} style={{ border: '2px solid white', color: 'white' }} variant='standard'>{clickOnce?"Create Notes":"Clear Notes"}</Button>
-                        </Box>
-                        <Box>
-                            <hr />
-                                <Button style={{color:'white',background:'none',width:'100%',height:'55px'}} variant='contained'>Pomodoro</Button>
-                            <hr />
+                    <Box style={{ display: 'flex',height:'100%', flexDirection: 'column', gap: '20px', padding: '20px' }}>
+                        <Typography style={{ color: 'white', fontSize: '25px',textAlign:'center' }}>{username}</Typography>
+                        <Box style={{width:'100%',display:'flex',flexDirection:'column'}}>   
+                            <NaviButton className="abc" to={'/intro'}>home</NaviButton>
+                            <NaviButton className="abc" to={'/about'}>About</NaviButton>
+                            <NaviButton className="abc" to={'/contact'}>Contact</NaviButton>
+                            <NaviButton className="abc" to={'/service'}>Service</NaviButton>
                         </Box>
                     </Box>
                 </Drawer>
@@ -120,7 +132,7 @@ const UserInterface = () => {
                 <Drawer
                     variant="permanent"
                     sx={{
-                        display: { xs: 'none', sm: 'block' },
+                        display: { xs: 'none', md: 'block' },
                         '& .MuiDrawer-paper': {
                             boxSizing: 'border-box',
                             width: drawerWidth,
@@ -140,7 +152,7 @@ const UserInterface = () => {
                     </Box>
                 </Drawer>
             </Box>
-            <Box component="main" sx={{ flexGrow: 1, minHeight: '100vh', p: 3, marginTop: { xs: '50px', sm: '0', lg: '0' }, width: { sm: `calc(100% - ${drawerWidth}px)` }, backgroundColor: ' black' }}>
+            <Box component="main" sx={{ flexGrow: 1, minHeight: '100vh', p: 3, marginTop: { xs: '50px',md:'0',lg: '0' }, width: { sm: `calc(100% - ${drawerWidth}px)` }, backgroundColor: ' black' }}>
                 <Grid container>
                     <Grid item style={{display: 'flex', gap: '10px' }} xs={12} lg={12} sm={12} md={12}>
                         <Typography style={{ color: 'white', fontSize: '70px', fontWeight: 'bold', letterSpacing: '2px' }}>Notes</Typography>
