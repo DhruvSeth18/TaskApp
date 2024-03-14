@@ -277,7 +277,7 @@ const NotesCard = ({newNote,userData,noData,setNewNote,setNoData,setClickOnce,cl
     const currentDate = new Date();
     const NoteDate = (currentDate)=>{
         const curr = new Date(currentDate);
-        const formatDate = Intl.DateTimeFormat('en-US', {
+        const formatDate = Intl.DateTimeFormat('en-US', { 
             year: 'numeric',
             month: 'long',
             day: 'numeric',

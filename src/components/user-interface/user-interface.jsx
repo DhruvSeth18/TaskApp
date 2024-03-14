@@ -144,10 +144,11 @@ const UserInterface = () => {
                         <Box style={{ display: 'flex', justifyContent: 'center' }}>
                             <Button onClick={createNewNote} style={{ border: '2px solid white', color: 'white' }} variant='standard'>{clickOnce?"Create Notes":"Clear Notes"}</Button>
                         </Box>
-                        <Box>
-                            <hr />
-                                <Button style={{color:'white',background:'none',width:'100%',height:'55px'}} variant='contained'>Pomodoro</Button>
-                            <hr />
+                        <Box style={{width:'100%',display:'flex',flexDirection:'column'}}>   
+                            <NaviButton className="abc" to={'/intro'}>home</NaviButton>
+                            <NaviButton className="abc" to={'/about'}>About</NaviButton>
+                            <NaviButton className="abc" to={'/contact'}>Contact</NaviButton>
+                            <NaviButton className="abc" to={'/service'}>Service</NaviButton>
                         </Box>
                     </Box>
                 </Drawer>
