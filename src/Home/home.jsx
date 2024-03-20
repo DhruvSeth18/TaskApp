@@ -6,7 +6,7 @@ import About from "../components/main/About.jsx";
 import Intro from "../components/main/Intro.jsx";
 
 const PrivateRoute = ()=>{
-    return localStorage.getItem("token")?
+    return localStorage.getItem("token") ?
     <>
         <Outlet/>
     </>:
