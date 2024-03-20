@@ -26,7 +26,7 @@ export const UserLogin = async (data) => {
         }
         return {
             status:'fail',
-            message:'Not Working, Server is Down'
+            message:'Internet is Slow, Try Again'
         }
     }
 }
@@ -50,7 +50,7 @@ export const signingUser = async (data) => {
         }
         return {
             status:'fail',
-            message:'Not Working, Server is Down'
+            message:'Internet is Slow, Try Again'
         }
     }
 }
@@ -88,7 +88,7 @@ export const NotesGet = async (UrlName) => {
         }
         return{
             status:'fail',
-            message:'Not Working, Server is Down'
+            message:'Internet is Slow, Try Again'
         }
     }
 }
@@ -116,7 +116,7 @@ export const DeleteNote = async (username,Id) => {
         }
         return{
             status:'fail',
-            message:'Not Working, Server is down'
+            message:'Internet is Slow, Try Again'
         }
     }
 }
@@ -142,7 +142,7 @@ export const updateNote = async (username,data, Id) => {
         }
         return{
             status:'fail',
-            message:'Not Working ,Server is Down'
+            message:'Internet is Slow, Try Again'
         }
     }
 }
@@ -169,7 +169,7 @@ export const CreateNotes = async (username,data)=>{
         }
         return{
             status:error.response.data.status,
-            message:"Not Working, Server is Down"
+            message:"Internet is Slow, Try Again"
         }
     }
 }

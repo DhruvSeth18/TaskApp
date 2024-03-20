@@ -357,7 +357,7 @@ const Login = ({ open, setLog }) => {
                                 <EditButton onClick={LoginUser} variant="outlined">Login</EditButton>
                             </LoginButtonBox>
                             <Box style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                                <Typography variant="p" style={{ color: 'white' }}> You Look New hare{" "}<span onClick={openSign} style={{ color: "#50C4ED", cursor: "pointer" }}> Create a Account </span> </Typography>
+                                <Typography variant="p" style={{ color: 'white' }}> You Look New hare{" "}<span onClick={openSign} style={{ color: "#50C4ED", cursor: "pointer" }}> Create an Account </span> </Typography>
                             </Box>
                         </Box>
                     </LoginEntry>

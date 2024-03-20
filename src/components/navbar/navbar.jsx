@@ -146,7 +146,7 @@ const Nav = () => {
                             </>
                                 :
                                 <Link to={`/intro?login=true`}>
-                                    <EditButton onClick={openLogin} sx={{ color: 'white', fontSize: '20px', fontWeight: 'bold', letterSpacing: '1px',scale:{sm:'1',xs:'0.89'} }}> Login </EditButton>
+                                    <EditButton onClick={openLogin} sx={{ color: 'white', fontSize: '20px', fontWeight: 'bold', letterSpacing: '1px',textTransform: 'lowercase',scale:{sm:'1',xs:'0.89'} }}> Login </EditButton>
                                 </Link>
                         }
                     </Box>
